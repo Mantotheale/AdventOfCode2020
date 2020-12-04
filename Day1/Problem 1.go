@@ -9,11 +9,14 @@ import (
 
 func main () {
   // Read all the numbers from the file and save them in a slice
-  var number []int = ReadNumbers()
+  var numbers []int = ReadNumbers()
 
+  // Scan every combination of numbers in the slice
 	for i := 0; i < len(numbers) - 1; i++ {
 		for j := i + 1; j < len(numbers); j++ {
+      // Check if the sum is 2020
 			if numbers[i] + numbers[j] == 2020 {
+        // Print the product of the numbers if found
 				fmt.Println(numbers[i] * numbers[j])
 			}
 		}
@@ -21,16 +24,21 @@ func main () {
 }
 
 func ReadNumbers() (numbers []int) {
-  // Create a scanner to parse the file
-  scanner := bufio.NewScanner(os.Stdin)
+  // Open the input file and create a scanner to parse it
+  file, _ := os.Open("Input.txt")
+  scanner := bufio.NewScanner(file)
   
   for scanner.Scan() {
-		n, err := strconv.Atoi(scanner.Text())
+    // Try to convert the row to the integer in it
+    n, err := strconv.Atoi(scanner.Text())
 
-		if err == nil {
-			numbers = append(numbers, n)
-		} else {
-			fmt.Println("Errore")
-		}
-	}
+    // If the conversion is successful, add the number to the slice
+    if err == nil {
+      numbers = append(numbers, n)
+    } else {
+      fmt.Println("Errore")
+    }
+  }
+
+  return
 }
