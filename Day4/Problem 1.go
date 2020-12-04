@@ -34,16 +34,6 @@ func main() {
 	fmt.Println(total)
 }
 
-// Function to check if a record is valid
-func IsRecordValid (r record) bool {
-  // If neither of the mandatory fields are missing, the record is valid
-  if r.byr != "" && r.iyr != "" && r.eyr != "" && r.hgt != "" && r.hcl != "" && r.ecl != "" && r.pid != "" {
-    return true
-  } else {
-    return false
-  }
-}
-
 // Function to extract the various records from the input file
 func ExtractRecords() (records []record) {
   // Open the input file and create a scanner to parse it
@@ -94,4 +84,14 @@ func ConvertRecord(s string) (r record) {
   }
 
   return
+}
+
+// Function to check if a record is valid
+func IsRecordValid (r record) bool {
+  // If neither of the mandatory fields are missing, the record is valid
+  if r.byr != "" && r.iyr != "" && r.eyr != "" && r.hgt != "" && r.hcl != "" && r.ecl != "" && r.pid != "" {
+    return true
+  } else {
+    return false
+  }
 }
