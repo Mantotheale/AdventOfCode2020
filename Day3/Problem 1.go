@@ -9,6 +9,7 @@ import (
 func main() {
   // Slice to store the various elements of the field
 	var grid []string = ReadGrid()
+  // Vars to store the present position and the total of trees
 	var row, col, trees int
 	
   // Repeat the cycle until you exceed the last row
